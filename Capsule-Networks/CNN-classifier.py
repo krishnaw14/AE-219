@@ -1,6 +1,6 @@
 import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
+#import pandas as pd
+#import matplotlib.pyplot as plt
 from keras import backend as K
 from keras.datasets import mnist
 from keras.utils import to_categorical
@@ -9,9 +9,20 @@ from keras.layers import Dense, Dropout, Flatten, Dropout
 from keras.layers.convolutional import Conv2D, MaxPooling2D
 from keras.layers.core import Activation
 from keras.datasets import mnist
+import gzip
+import sys
+import _pickle as cPickle
+
+f = gzip.open('mnist.pkl.gz', 'rb')
+if sys.version_info < (3,):
+    data = cPickle.load(f)
+else:
+    data = cPickle.load(f, encoding='bytes')
+f.close()
+(x_train, y_train), (x_test, y_test) = data
 
 #Load The dataset
-(x_train, y_train), (x_test, y_test) = mnist.load_data()
+#(x_train, y_train), (x_test, y_test) = mnist.load_data()
 
 #Easier to process values between 0 and 1
 X_train = x_train/255
@@ -29,11 +40,11 @@ print("The number of occuranc of each class in the dataset = ", dict (zip(classe
 print("\n")
 print("Displaying some of the images with labels: ")
 images_and_labels = list(zip(X_train, y_train))
-for index, (image, label) in enumerate(images_and_labels[12:24]):
-    plt.subplot(5,4,index+1)
-    plt.axis('off')
-    plt.imshow(image, cmap=plt.cm.gray_r, interpolation = 'nearest')
-    plt.title('label: %i' % label)
+#for index, (image, label) in enumerate(images_and_labels[12:24]):
+ #   plt.subplot(5,4,index+1)
+ #   plt.axis('off')
+ #   plt.imshow(image, cmap=plt.cm.gray_r, interpolation = 'nearest')
+ #   plt.title('label: %i' % label)
 
 
 K.set_image_data_format('channels_last')
