@@ -4,6 +4,8 @@ import tensorflow as tf
 #Load the mnist dataset
 from tensorflow.examples.tutorials.mnist import input_data
 
+tf.reset_default_graph()
+
 mnist = input_data.read_data_sets('tmp/data')
 
 #Defining the parameters of convolution layers in the 1st two layer operations
@@ -16,7 +18,7 @@ conv1_params = {
 }
 
 conv2_params = {
-    "filters": 32*8 #(primaryCaps_n_blocks*primaryCaps_dim) 
+    "filters": 32*8, #(primaryCaps_n_blocks*primaryCaps_dim) 
     "kernel_size": 9,
     "strides": 2,
     "padding": "valid",
@@ -35,7 +37,7 @@ conv1 = tf.layers.conv2d(X,name='conv1', **conv1_params)
 #Primary Capsule Layer
 #Primary Capsule layer consists of 32 capsules with each capsule a 6x6 units
 primaryCaps_blocks = 32
-primaryCaps_units = primaryCaps_n_blocks*6*6 
+primaryCaps_units = primaryCaps_blocks*6*6 
 primaryCaps_dim = 8
 
 #Another Convolution is applied and the output is reshaped for the primary capsule layer
@@ -72,15 +74,15 @@ W = tf.Variable(Wij, name="W")
 batch_size = tf.shape(X)[0]
 W_tiled = tf.tile(W, [batch_size,1,1,1,1], name="W_tiled")
 
-primaryCaps_output_expanded = tf.expands_dims(primaryCaps_output, -1, name = "primaryCaps_output_expanded")
-primaryCaps_output_tile = tf.expand_dims(primaryCaps, 2, name="primaryCaps_output_tile")
+primaryCaps_output_expanded = tf.expand_dims(primaryCaps_output, -1, name = "primaryCaps_output_expanded")
+primaryCaps_output_tile = tf.expand_dims(primaryCaps_output_expanded, 2, name="primaryCaps_output_tile")
 primaryCaps_output_tiled = tf.tile(primaryCaps_output_tile, [1,1,digitCaps_blocks, 1,1], name = "primaryCaps_output_tiled")
 
 digitCaps_predicted_vectors = tf.matmul(W_tiled, primaryCaps_output_tiled, name = "digitCaps_predicted_vectors")
 
 #Dynamic Routing
 
-raw_weights = tf.zeros([batch_size, primaryCaps_units, digitCaps_blocks])
+raw_weights = tf.zeros([batch_size, primaryCaps_units, digitCaps_blocks,1,1])
 
 routing_weights = tf.nn.softmax(raw_weights, axis=2, name = "routing_weights")
 
@@ -98,7 +100,7 @@ raw_weights_2 = tf.add(raw_weights, agreement, name="raw_weights_2")
 routing_weights_2 = tf.nn.softmax(raw_weights_2,
                                         dim=2,
                                         name="routing_weights_2")
-weighted_predictions_2 = tf.multiply(routing_weights_round_2,
+weighted_predictions_2 = tf.multiply(routing_weights_2,
                                            digitCaps_predicted_vectors,
                                            name="weighted_predictions_2")
 weighted_sum_2 = tf.reduce_sum(weighted_predictions_2,
@@ -165,8 +167,8 @@ digitCaps_output_masked = tf.multiply(
     digitCaps_output, reconstruction_mask_reshaped,
     name="caps2_output_masked")
 
-decoder_input = tf.reshape(caps2_output_masked,
-                           [-1, caps2_n_caps * caps2_n_dims],
+decoder_input = tf.reshape(digitCaps_output_masked,
+                           [-1, digitCaps_blocks * digitCaps_dim],
                            name="decoder_input")
 
 #Decoder
@@ -286,4 +288,4 @@ with tf.Session() as sess:
     print("\rFinal test accuracy: {:.4f}%  Loss: {:.6f}".format(
         acc_test * 100, loss_test))
 
-    
+
