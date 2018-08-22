@@ -6,7 +6,7 @@ from tensorflow.examples.tutorials.mnist import input_data
 
 tf.reset_default_graph()
 
-mnist = input_data.read_data_sets('tmp/data')
+mnist = input_data.read_data_sets('MNIST_data')
 
 #Defining the parameters of convolution layers in the 1st two layer operations
 conv1_params = {
@@ -78,7 +78,7 @@ Weighted average of uj|i for all i is then fed to digitCaps j and the output of 
 The dot product of the digitCaps output is performed with the prediction vectors to update the weights of each vector in the weighted average that is sent to each digitCaps output (dynamic routing)
 '''
 
-W_ = tf.random_normal(shape = (1, primaryCaps_units, digitCaps_blocks, digitCaps_dim, primaryCaps_dim))
+W_ = tf.random_normal(shape = (1, primaryCaps_units, digitCaps_blocks, digitCaps_dim, primaryCaps_dim), stddev=0.1, dtype=tf.float32, name="W_init")
 W = tf.Variable(W_, name="W")
 
 # The W tensor described above is tiled across the batch_size dimension
@@ -121,7 +121,7 @@ weighted_sum = tf.reduce_sum(weighted_predictions, axis=1, keep_dims = True, nam
 
 # squash the weighted sum to get the initial output of the digitCaps layer that is updated by the dynamic routing
 # Shape of digitCaps_output_1 = (None, 10, 16, 1)
-digitCaps_output_1 = squash(weighted_sum, axis=-1, name="digitCaps_output_1")
+digitCaps_output_1 = squash(weighted_sum, axis=-2, name="digitCaps_output_1")
 
 # digitCaps_output_1 is tiled along 1152 dimensions to compute dot product with each of the 1152 prediction vectors for a particular capsule
 # Shape of digitCaps_output_1_tiled = (None, 1152, 10, 16, 1)
@@ -214,7 +214,7 @@ absent_error = tf.reshape(absent_error_raw, shape=(-1, 10),
 
 # Loss error = Absent error + present error
 # Shape of L = (None, 10)
-L = tf.add(T*present_error, lambda_*(1-T)*absent_error, name="L")
+L = tf.add(T*present_error, lambda_*(1.0-T)*absent_error, name="L")
 
 # margin_loss computes mean of the loss for each digit 
 # Shape of margin_loss = (None, 1)
@@ -307,10 +307,10 @@ best_loss_val = np.infty
 checkpoint_path = "./my_capsule_network"
 
 with tf.Session() as sess:
-    if restore_checkpoint and tf.train.checkpoint_exists(checkpoint_path):
-        saver.restore(sess, checkpoint_path)
-    else:
-        init.run()
+    # if restore_checkpoint and tf.train.checkpoint_exists(checkpoint_path):
+    #     saver.restore(sess, checkpoint_path)
+    # else:
+    init.run()
 
     for epoch in range(n_epochs):
         for iteration in range(1, n_iterations_per_epoch + 1):
