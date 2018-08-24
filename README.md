@@ -7,4 +7,4 @@ Machine Learning Algorithms implemented:
 - Capsule Networks
 - GANs on MNIST using standard neural networks Generator and Discriminator
 
-Currently working on General Adversarial Networks
+Currently working on other applications General Adversarial Networks
