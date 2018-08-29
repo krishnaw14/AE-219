@@ -96,9 +96,7 @@ class GAN():
 
 		for epoch in range(epochs):
 
-            # ---------------------
             #  Train Discriminator
-            # ---------------------
 
             # Select a random batch of images
 			idx = np.random.randint(0, X_train.shape[0], batch_size)
@@ -114,9 +112,7 @@ class GAN():
 			d_loss_fake = self.discriminator.train_on_batch(gen_imgs, fake)
 			d_loss = 0.5 * np.add(d_loss_real, d_loss_fake)
 
-            # ---------------------
             #  Train Generator
-            # ---------------------
 
 			noise = np.random.normal(0, 1, (batch_size, self.latent_dim))
 
