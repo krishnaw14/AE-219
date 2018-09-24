@@ -4,7 +4,7 @@ Supervised Learning Project - Deep Neural Networks
 Machine Learning Algorithms implemented:
 
 - Decision Trees
-- Capsule Networks
+- Capsule Networks (in Tensorflow and pytorch)
 - GANs on MNIST using standard neural networks Generator and Discriminator
 - DCGANs on MNIST 
 - SRGANs 
