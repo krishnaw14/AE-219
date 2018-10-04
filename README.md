@@ -1,13 +1,14 @@
 # AE-219
 Supervised Learning Project - Deep Neural Networks
 
+Exploration of Generative and latest vision based Neural Network architectures
+
 Machine Learning Algorithms implemented:
 
-- Decision Trees
-- Capsule Networks (in Tensorflow and pytorch)
-- GANs on MNIST using standard neural networks Generator and Discriminator
-- DCGANs on MNIST 
-- SRGANs 
+- [x] Decision Trees
+- [x] Capsule Networks (in Tensorflow and pytorch)
+- [x] GANs using standard neural networks Generator and Discriminator
+- [x] DCGANs on MNIST 
+- [ ] SRGANs (Some bugs)
+- [ ] InfoGans (Some bugs)
 
-
-Currently working on other applications General Adversarial Networks
