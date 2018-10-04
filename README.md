@@ -12,3 +12,4 @@ Machine Learning Algorithms implemented:
 - [ ] SRGANs (Some bugs)
 - [ ] InfoGans (Some bugs)
 
+Currently working on Reinforcement Learning concepts and implementations
