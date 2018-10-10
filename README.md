@@ -10,6 +10,6 @@ Machine Learning Algorithms implemented:
 - [x] GANs using standard neural networks Generator and Discriminator
 - [x] DCGANs on MNIST 
 - [ ] SRGANs (Some bugs)
-- [ ] InfoGans (Some bugs)
+- [x] InfoGans (Work on InfoGans is moved to a new repository)
 
 Currently working on Reinforcement Learning concepts and implementations
