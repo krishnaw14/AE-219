@@ -25,3 +25,4 @@ Machine Learning Algorithms implemented:
 - [ ] Duel Deep Q-Learning
 - [ ] Actor-Critic Model
 - [ ] Policy Proximal Optimisation
+- [ ] Multi-agent Reinforcement Learning
