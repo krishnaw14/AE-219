@@ -5,11 +5,23 @@ Exploration of Generative and latest vision based Neural Network architectures
 
 Machine Learning Algorithms implemented:
 
-- [x] Decision Trees
-- [x] Capsule Networks (in Tensorflow and pytorch)
-- [x] GANs using standard neural networks Generator and Discriminator
-- [x] DCGANs on MNIST 
-- [ ] SRGANs (Some bugs)
-- [x] InfoGans (Work on InfoGans is moved to a new repository)
+### Statistical Machine Learning
 
-Currently working on Reinforcement Learning concepts and implementations
+- Decision Trees
+
+### Vision based Neural Network Architectures
+
+- Capsule Networks (in Tensorflow and pytorch)
+- Standard GANs 
+- DCGANs 
+- InfoGANs
+
+### Reinforcement Learning
+
+- [x] Policy gradients
+- [x] Q-learning
+- [ ] Deep Q-learning
+- [ ] Double Deep Q-learning
+- [ ] Duel Deep Q-Learning
+- [ ] Actor-Critic Model
+- [ ] Policy Proximal Optimisation
