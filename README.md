@@ -26,3 +26,11 @@ Machine Learning Algorithms implemented:
 - [ ] Actor-Critic Model
 - [ ] Policy Proximal Optimisation
 - [ ] Multi-agent Reinforcement Learning
+
+## Work left
+
+- [ ] Final Report
+- [ ] Final Presentation
+- [ ] Codes
+- [ ] BTP Decision
+
