@@ -21,9 +21,7 @@ Machine Learning Algorithms implemented:
 - [x] Policy gradients
 - [x] Q-learning
 - [ ] Deep Q-learning
-- [ ] Double Deep Q-learning
-- [ ] Duel Deep Q-Learning
-- [ ] Actor-Critic Model
+- [x] Actor-Critic Model
 - [ ] Policy Proximal Optimisation
 - [ ] Multi-agent Reinforcement Learning
 
