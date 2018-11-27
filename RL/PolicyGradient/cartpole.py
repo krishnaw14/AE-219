@@ -11,7 +11,7 @@ def play(env, policy, train):
 	observations = [] # snapshot of each step during the training
 
 	# Play the game for large number of timesteps until gym tells us than the game is done
-	for i in range(5000):
+	for i in range(500):
 
 		observations = [observation.tolist()]
 
@@ -50,9 +50,10 @@ best_parameters = (0, [], []) # To store the best score, observation and best pe
 # Policy is a 1D array of 4 elements. Dot product of policy is taken with the current state of the agent to get the required action.
 
 # Training on various prandomly generated policies
-for i in range(100):
+for i in range(10):
 	print("\n--------------------------------\n")
 	print("Trying out", i+1, "th policy")
+	# policy = np.random.rand(1,4) - 0.5
 	policy = np.random.rand(1,4) - 0.5
 
 	score, observations = play(env, policy, True)
@@ -66,7 +67,7 @@ print('Maximum Score', best_parameters [0])
 print('Maximum Observation', best_parameters [1])
 print('Best Policy', best_parameters [2])
 print("\n--------------------------------\n")
-print("Evaluating Avergae Score of the best performing Policy")
+print("Evaluating Average Score of the best performing Policy")
 
 total_score = 0
 for _ in range(100):
