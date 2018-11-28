@@ -29,6 +29,6 @@ Machine Learning Algorithms implemented:
 
 - [ ] Final Report
 - [ ] Final Presentation
-- [ ] Codes
+- [x] Codes
 - [ ] BTP Decision
 
