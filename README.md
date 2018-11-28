@@ -18,17 +18,15 @@ Machine Learning Algorithms implemented:
 
 ### Reinforcement Learning
 
-- [x] Policy gradients
-- [x] Q-learning
-- [ ] Deep Q-learning
-- [x] Actor-Critic Model
-- [ ] Policy Proximal Optimisation
+- Policy gradients
+- Q-learning
+- Actor-Critic Model
 - [ ] Multi-agent Reinforcement Learning
 
 ## Work left
 
-- [ ] Final Report
-- [ ] Final Presentation
+- [x] Final Report
+- [x] Final Presentation
 - [x] Codes
 - [ ] BTP Decision
 
