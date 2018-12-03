@@ -9,10 +9,13 @@ Machine Learning Algorithms implemented:
 
 - Decision Trees
 
-### Vision based Neural Network Architectures
+### Classification Model
 
 - Capsule Networks (in Tensorflow and pytorch)
-- Standard GANs 
+
+### Generative Models
+
+- Vanilla GANs 
 - DCGANs 
 - InfoGANs
 
@@ -22,9 +25,4 @@ Machine Learning Algorithms implemented:
 - Q-learning
 - Actor-Critic Model
 
-## Work left
-
-- [x] Final Report
-- [x] Final Presentation
-- [x] Codes
 
