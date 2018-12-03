@@ -21,12 +21,10 @@ Machine Learning Algorithms implemented:
 - Policy gradients
 - Q-learning
 - Actor-Critic Model
-- [ ] Multi-agent Reinforcement Learning
 
 ## Work left
 
 - [x] Final Report
 - [x] Final Presentation
 - [x] Codes
-- [ ] BTP Decision
 
