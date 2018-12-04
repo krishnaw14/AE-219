@@ -1,7 +1,7 @@
 # AE-219
 Supervised Learning Project - Deep Neural Networks
 
-Exploration of Generative and latest vision based Neural Network architectures
+Exploration of vision based, Generative and Reinforcement Learning Neural Network architectures
 
 Machine Learning Algorithms implemented:
 
